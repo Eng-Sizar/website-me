@@ -1,53 +1,462 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hamza Hesham | Full-Stack Developer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Premium portfolio for Hamza Hesham, Senior Programmer and Full Stack Web Developer." />
+  <title>Hamza Hesham | Senior Programmer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "Segoe UI", "sans-serif"],
+          },
+          colors: {
+            ink: "#050816",
+            night: "#090d1f",
+            glass: "rgba(255,255,255,.08)",
+            neon: "#22d3ee",
+            mint: "#34d399",
+            ember: "#f59e0b",
+          },
+          boxShadow: {
+            glow: "0 0 42px rgba(34,211,238,.24)",
+            soft: "0 24px 80px rgba(0,0,0,.35)",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <div class="container">
-    <section class="hero-section fade-in">
-      <div class="intro-content">
-        <h1>Full-Stack Developer<br><span class="gradient-text">Hamza Hesham</span></h1>
-        <p class="description">Im an intermediate front-end developer and a back-end professional with 2+ years of experience.</p>
-        <div class="social-links">
-          <a href="https://wa.me/201554196445?text=جتلك+من+الموقع" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/i_x_x_t" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-      <div class="profile-container">
-        <img src="https://i.pinimg.com/236x/7d/df/f4/7ddff4d88a0a5bf3f9024c35c8f15685.jpg" alt="Youssef Veni Profile" class="profile-img fade-in">
-        <div class="profile-buttons">
-          <button class="message-btn" onclick="MessageClick()">Message</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="skills-section fade-in">
-      <div class="skill-card">
-        <h2>Frontend Expertise</h2>
-        <ul class="skill-list">
-          <li><i class="fas fa-code"></i>HTML5</li>
-          <li><i class="fab fa-js"></i>JavaScript (ES6+)</li>
-          <li><i class="fa-brands fa-css3-alt"></i></i> CSS3 Style</li>
-        </ul>
-      </div>
-
-      <div class="skill-card">
-        <h2>Backend Skills</h2>
-        <ul class="skill-list">
-          <li><i class="fab fa-js"></i>JavaScript (ES6+)</li>
-          <li><i class="fab fa-node"></i>Node.js</li>
-          <li><i class="fab fa-python"></i>C/C++/Java</li>
-        </ul>
-      </div>
-    </section>
+<body class="bg-ink text-slate-100 antialiased selection:bg-cyan-300 selection:text-slate-950">
+  <!-- Loading screen -->
+  <div id="loader" class="fixed inset-0 z-[100] grid place-items-center bg-ink transition-all duration-700">
+    <div class="relative grid place-items-center">
+      <div class="loader-ring"></div>
+      <p class="mt-8 text-sm font-semibold uppercase tracking-[.32em] text-cyan-100">Initializing</p>
+    </div>
   </div>
+
+  <!-- Animated ambient background -->
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,.18),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(245,158,11,.14),transparent_26%),linear-gradient(135deg,#050816_0%,#080b19_50%,#02030a_100%)]"></div>
+    <div class="mesh-line opacity-40"></div>
+    <div class="float-shape left-[6%] top-[16%] h-28 w-28 border-cyan-300/25"></div>
+    <div class="float-shape right-[10%] top-[30%] h-40 w-40 border-emerald-300/20 delay-300"></div>
+    <div class="float-shape bottom-[12%] left-[18%] h-24 w-24 border-amber-300/20 delay-700"></div>
+    <div id="particles" class="absolute inset-0"></div>
+  </div>
+
+  <!-- Sticky navigation -->
+  <header id="navbar" class="fixed left-0 right-0 top-0 z-50 transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10" aria-label="Primary navigation">
+      <a href="#home" class="group flex items-center gap-3" aria-label="Hamza Hesham home">
+        <span class="grid h-10 w-10 place-items-center rounded-2xl border border-white/15 bg-white/10 text-sm font-black text-cyan-100 shadow-glow backdrop-blur">HH</span>
+        <span class="hidden text-sm font-bold uppercase tracking-[.28em] text-slate-200 sm:block">Hamza Hesham</span>
+      </a>
+
+      <div class="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[.06] p-1 backdrop-blur-xl lg:flex">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+
+      <a href="#contact" class="hidden rounded-full border border-cyan-300/30 bg-cyan-300/10 px-5 py-3 text-sm font-bold text-cyan-100 shadow-glow transition hover:-translate-y-0.5 hover:bg-cyan-300 hover:text-slate-950 lg:inline-flex">
+        Let's Build
+      </a>
+
+      <button id="menuToggle" class="grid h-11 w-11 place-items-center rounded-2xl border border-white/15 bg-white/10 text-slate-100 backdrop-blur lg:hidden" type="button" aria-label="Open menu" aria-expanded="false">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobileMenu" class="mx-5 hidden rounded-3xl border border-white/10 bg-slate-950/90 p-3 shadow-soft backdrop-blur-2xl lg:hidden">
+      <a class="mobile-link" href="#home">Home</a>
+      <a class="mobile-link" href="#about">About</a>
+      <a class="mobile-link" href="#skills">Skills</a>
+      <a class="mobile-link" href="#experience">Experience</a>
+      <a class="mobile-link" href="#projects">Projects</a>
+      <a class="mobile-link" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="relative flex min-h-screen items-center overflow-hidden px-5 pb-20 pt-32 sm:px-8 lg:px-10">
+      <div class="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.04fr_.96fr]">
+        <div class="reveal max-w-3xl">
+          <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[.06] px-4 py-2 text-sm text-slate-300 backdrop-blur-xl">
+            <span class="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(52,211,153,.8)]"></span>
+            Available for premium web projects
+          </div>
+
+          <p class="mb-4 text-sm font-bold uppercase tracking-[.34em] text-cyan-200">Senior Programmer & Full Stack Web Developer</p>
+          <h1 class="max-w-4xl text-5xl font-black leading-[1.04] text-white sm:text-6xl lg:text-6xl xl:text-7xl">
+            Hamza Hesham
+            <span class="block bg-gradient-to-r from-cyan-200 via-emerald-200 to-amber-200 bg-clip-text text-transparent">builds polished digital systems.</span>
+          </h1>
+
+          <div class="mt-7 flex min-h-10 flex-wrap items-center gap-3 text-xl font-semibold text-slate-300 sm:text-2xl">
+            <span>I am a</span>
+            <span id="typingText" class="text-cyan-200"></span>
+            <span class="typing-cursor" aria-hidden="true"></span>
+          </div>
+
+          <p class="mt-7 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            With 3 years of hands-on experience, I craft fast, resilient, and visually refined web applications across frontend interfaces, backend APIs, and developer-focused systems.
+          </p>
+
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a href="#projects" class="btn-primary">
+              View Projects
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#contact" class="btn-secondary">
+              Contact Me
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 8v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8m18 0a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3m18 0-8.4 5.6a1 1 0 0 1-1.2 0L3 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <dl class="mt-12 grid max-w-xl grid-cols-3 gap-3">
+            <div class="stat-card">
+              <dt>Experience</dt>
+              <dd>3Y+</dd>
+            </div>
+            <div class="stat-card">
+              <dt>Stack</dt>
+              <dd>Full</dd>
+            </div>
+            <div class="stat-card">
+              <dt>Focus</dt>
+              <dd>Web</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="reveal relative mx-auto w-full max-w-[620px] lg:justify-self-end">
+          <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-cyan-300/25 via-emerald-300/10 to-amber-300/20 blur-2xl"></div>
+          <figure class="profile-frame relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/[.07] p-3 shadow-soft backdrop-blur">
+            <img src="assets/profile.png" alt="Hamza Hesham profile visual" class="h-[430px] w-full rounded-[1.55rem] object-cover object-[65%_center] sm:h-[520px]" />
+            <figcaption class="absolute bottom-6 left-6 right-6 rounded-3xl border border-white/15 bg-slate-950/55 p-4 backdrop-blur-xl">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="text-sm font-bold text-white">Clean architecture. Sharp interfaces.</p>
+                  <p class="mt-1 text-xs text-slate-300">Frontend, backend, and performance-minded delivery.</p>
+                </div>
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-cyan-300 text-slate-950 shadow-glow">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="section-shell">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.85fr_1.15fr]">
+        <div class="reveal">
+          <p class="section-kicker">About Me</p>
+          <h2 class="section-title">A developer who blends engineering discipline with product taste.</h2>
+        </div>
+        <div class="reveal glass-panel p-6 sm:p-8">
+          <p class="text-lg leading-9 text-slate-200">
+            I am Hamza Hesham, a Senior Programmer and Full Stack Web Developer focused on building modern web products that feel elegant, load quickly, and stay maintainable as they grow.
+          </p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="info-tile">
+              <span>01</span>
+              <h3>Frontend Craft</h3>
+              <p>Responsive layouts, smooth interaction design, and clean UI systems.</p>
+            </div>
+            <div class="info-tile">
+              <span>02</span>
+              <h3>Backend Thinking</h3>
+              <p>APIs, Node.js services, Express.js architecture, and reliable data flow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section-shell">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal max-w-3xl">
+          <p class="section-kicker">Skills</p>
+          <h2 class="section-title">A practical stack for shipping polished, scalable web experiences.</h2>
+        </div>
+
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="skill-card reveal" style="--accent:#f97316">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16l-1.45 16.2L12 21l-6.55-1.8L4 3Z"/><path d="M8 7h8l-.18 2H10.2l.13 1.7h5.35l-.43 5.2L12 16.8l-3.24-.9-.2-2.23h1.95l.09.75 1.4.38 1.42-.38.15-1.76H8.45L8 7Z"/></svg>
+            <h3>HTML</h3>
+            <p>Semantic structure, accessibility, and SEO-friendly foundations.</p>
+          </article>
+          <article class="skill-card reveal" style="--accent:#38bdf8">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16l-1.45 16.2L12 21l-6.55-1.8L4 3Z"/><path d="M8.2 7h7.7l-.18 2H10.3l-.14 1.55h5.42l-.5 5.35L12 16.8l-3.05-.9-.2-2.12h1.95l.08.65 1.22.35 1.25-.35.16-1.85H8L8.2 7Z"/></svg>
+            <h3>CSS</h3>
+            <p>Responsive systems, animation, glassmorphism, and premium visual polish.</p>
+          </article>
+          <article class="skill-card reveal" style="--accent:#facc15">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4V4Z"/><path d="M9.6 17.1c.37.61.86 1.06 1.72 1.06.72 0 1.18-.36 1.18-.86 0-.6-.47-.81-1.27-1.16l-.44-.19c-1.26-.54-2.1-1.22-2.1-2.66 0-1.32 1-2.33 2.58-2.33 1.12 0 1.93.39 2.5 1.41l-1.37.88c-.3-.54-.62-.75-1.13-.75-.52 0-.84.33-.84.75 0 .53.33.74 1.08 1.07l.44.19c1.49.64 2.33 1.29 2.33 2.75 0 1.58-1.24 2.44-2.9 2.44-1.63 0-2.68-.78-3.2-1.8l1.42-.8Z"/></svg>
+            <h3>JavaScript</h3>
+            <p>Interactive experiences, browser APIs, and modern application logic.</p>
+          </article>
+          <article class="skill-card reveal" style="--accent:#60a5fa">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Z"/><path d="M6.5 9h6M9.5 9v8M14.5 17V9h2.8c1.5 0 2.7 1.2 2.7 2.7s-1.2 2.7-2.7 2.7h-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <h3>TypeScript</h3>
+            <p>Typed codebases, maintainable contracts, and safer product iteration.</p>
+          </article>
+          <article class="skill-card reveal" style="--accent:#34d399">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21 4.5 16.65v-8.7L12 3.6l7.5 4.35v8.7L12 21Z"/><path d="M9.3 14.8V9.2h1.55l2.55 3.45V9.2h1.5v5.6h-1.45l-2.65-3.58v3.58H9.3Z"/></svg>
+            <h3>Node.js</h3>
+            <p>Server-side JavaScript, services, tooling, and real-time workflows.</p>
+          </article>
+          <article class="skill-card reveal" style="--accent:#9ca3af">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 7h10v10H7V7Z"/></svg>
+            <h3>Express.js</h3>
+            <p>REST APIs, middleware, routing, and scalable backend foundations.</p>
+          </article>
+          <article class="skill-card reveal" style="--accent:#8b5cf6">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2Z"/><path d="M14.8 9.2a3.8 3.8 0 1 0 0 5.6M17 10v4M19 10v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <h3>C++</h3>
+            <p>Performance-minded programming, algorithms, and system fundamentals.</p>
+          </article>
+          <article class="skill-card reveal" style="--accent:#c084fc">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2Z"/><path d="M14.8 9.2a3.8 3.8 0 1 0 0 5.6M17 12h4M19 10v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <h3>C#</h3>
+            <p>Application logic, strong typing, and object-oriented development.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section-shell">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal max-w-3xl">
+          <p class="section-kicker">Experience</p>
+          <h2 class="section-title">Three years turning ideas into dependable web products.</h2>
+        </div>
+
+        <div class="mt-12 grid gap-5 lg:grid-cols-3">
+          <article class="timeline-card reveal">
+            <span>Year 01</span>
+            <h3>Programming Foundations</h3>
+            <p>Built strong fundamentals with HTML, CSS, JavaScript, C++, and C# while learning clean problem-solving habits.</p>
+          </article>
+          <article class="timeline-card reveal">
+            <span>Year 02</span>
+            <h3>Full Stack Delivery</h3>
+            <p>Advanced into Node.js, Express.js, TypeScript, and integrated frontend-to-backend workflows for complete applications.</p>
+          </article>
+          <article class="timeline-card reveal">
+            <span>Year 03</span>
+            <h3>Senior-Level Polish</h3>
+            <p>Focused on architecture, refined interfaces, performance, maintainability, and professional project presentation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section-shell">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div class="max-w-3xl">
+            <p class="section-kicker">Projects</p>
+            <h2 class="section-title">Selected builds with modern interfaces and practical engineering.</h2>
+          </div>
+          <p class="max-w-sm text-sm leading-7 text-slate-400">Project cards are ready for real links, screenshots, and repository URLs when available.</p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <article class="project-card reveal">
+            <div class="project-visual visual-one">
+              <span></span>
+              <svg viewBox="0 0 300 180" aria-hidden="true">
+                <path d="M40 130h220M60 105h72M60 82h120M60 58h90" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+                <rect x="190" y="48" width="58" height="58" rx="14" fill="currentColor" opacity=".25"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3>Nova Dashboard</h3>
+              <p>A premium analytics interface with responsive data panels, clean navigation, and fast interaction patterns.</p>
+              <div class="tech-row">
+                <span>HTML</span><span>Tailwind</span><span>JavaScript</span>
+              </div>
+              <div class="mt-6 flex gap-3">
+                <a class="project-btn" href="#" aria-label="Nova Dashboard live demo">Live Demo</a>
+                <a class="project-btn ghost" href="#" aria-label="Nova Dashboard GitHub repository">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-visual visual-two">
+              <span></span>
+              <svg viewBox="0 0 300 180" aria-hidden="true">
+                <circle cx="88" cy="88" r="34" fill="currentColor" opacity=".22"/>
+                <path d="M140 62h82M140 90h110M140 118h66" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+                <path d="M70 126c30 24 78 24 108 0" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity=".32"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3>API Command Center</h3>
+              <p>A full stack control panel for managing users, services, API health, and operational workflows.</p>
+              <div class="tech-row">
+                <span>Node.js</span><span>Express</span><span>TypeScript</span>
+              </div>
+              <div class="mt-6 flex gap-3">
+                <a class="project-btn" href="#" aria-label="API Command Center live demo">Live Demo</a>
+                <a class="project-btn ghost" href="#" aria-label="API Command Center GitHub repository">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-visual visual-three">
+              <span></span>
+              <svg viewBox="0 0 300 180" aria-hidden="true">
+                <path d="M74 118 116 70l36 38 28-24 48 48" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+                <rect x="42" y="44" width="216" height="92" rx="18" fill="currentColor" opacity=".12"/>
+                <circle cx="232" cy="62" r="12" fill="currentColor" opacity=".35"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3>Portfolio Engine</h3>
+              <p>A futuristic personal website system with animated content, polished sections, and conversion-focused contact flows.</p>
+              <div class="tech-row">
+                <span>HTML</span><span>CSS</span><span>JS</span>
+              </div>
+              <div class="mt-6 flex gap-3">
+                <a class="project-btn" href="#" aria-label="Portfolio Engine live demo">Live Demo</a>
+                <a class="project-btn ghost" href="#" aria-label="Portfolio Engine GitHub repository">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-shell pb-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal overflow-hidden rounded-[2rem] border border-white/10 bg-white/[.06] p-6 shadow-soft backdrop-blur-xl sm:p-10 lg:p-12">
+          <div class="grid gap-10 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+            <div>
+              <p class="section-kicker">Contact</p>
+              <h2 class="max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl">Ready to build something polished, fast, and memorable?</h2>
+              <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300">Connect with Hamza Hesham through your preferred social channel and start a conversation about your next web product.</p>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              <a class="social-btn whatsapp" href="https://wa.me/+201116648302" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 3A8.87 8.87 0 0 0 4.4 16.37L3.2 21l4.74-1.12A8.87 8.87 0 1 0 12.04 3Zm4.96 12.52c-.21.6-1.2 1.12-1.68 1.2-.45.07-1.02.1-1.64-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.35-3.8-4.48-3.98-.13-.17-1.07-1.42-1.07-2.72 0-1.3.68-1.93.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.06.6.46.21.52.73 1.78.8 1.91.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.76.98.87 1.8 1.14 2.06 1.27.26.13.42.11.57-.06.15-.17.66-.77.84-1.03.17-.26.35-.22.59-.13.24.09 1.52.72 1.78.85.26.13.44.2.5.31.07.12.07.67-.14 1.27Z"/></svg>
+                <span>WhatsApp</span>
+              </a>
+              <a class="social-btn telegram" href="https://t.me/I_X_X_T" target="_blank" rel="noopener noreferrer" aria-label="Contact on Telegram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 4.3 18.5 19.6c-.24 1.08-.88 1.35-1.78.84l-4.92-3.63-2.37 2.28c-.26.26-.48.48-.98.48l.35-5 9.1-8.23c.4-.35-.09-.55-.61-.2L6.04 13.28 1.2 11.76c-1.05-.33-1.07-1.05.22-1.55L20.35 2.9c.88-.33 1.65.2 1.36 1.4Z"/></svg>
+                <span>Telegram</span>
+              </a>
+              <a class="social-btn instagram" href="https://instagram.com/i_x_x_t" target="_blank" rel="noopener noreferrer" aria-label="Contact on Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 2.8h8.8a4.8 4.8 0 0 1 4.8 4.8v8.8a4.8 4.8 0 0 1-4.8 4.8H7.6a4.8 4.8 0 0 1-4.8-4.8V7.6a4.8 4.8 0 0 1 4.8-4.8Zm4.4 4.45A4.75 4.75 0 1 0 12 16.75a4.75 4.75 0 0 0 0-9.5Zm0 1.8A2.95 2.95 0 1 1 12 14.95a2.95 2.95 0 0 1 0-5.9Zm5.03-2.05a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1Z"/></svg>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="premium-footer px-5 pb-8 pt-16 sm:px-8 lg:px-10">
+    <div class="mx-auto max-w-7xl">
+      <div class="footer-panel">
+        <div class="grid gap-10 lg:grid-cols-[1.15fr_.85fr_.85fr]">
+          <div>
+            <a href="#home" class="inline-flex items-center gap-3" aria-label="Hamza Hesham home">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl border border-white/15 bg-white/10 text-sm font-black text-cyan-100 shadow-glow backdrop-blur">HH</span>
+              <span>
+                <strong class="block text-lg font-black text-white">Hamza Hesham</strong>
+                <span class="mt-1 block text-sm text-slate-400">Senior Programmer & Full Stack Web Developer</span>
+              </span>
+            </a>
+            <p class="mt-6 max-w-xl text-sm leading-7 text-slate-300">
+              Building polished web experiences with clean interfaces, reliable backend logic, and performance-minded engineering.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="footer-chip">3 Years Experience</span>
+              <span class="footer-chip">Full Stack</span>
+              <span class="footer-chip">Modern Web</span>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="footer-title">Navigation</h2>
+            <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
+              <a class="footer-link" href="#home">Home</a>
+              <a class="footer-link" href="#about">About</a>
+              <a class="footer-link" href="#skills">Skills</a>
+              <a class="footer-link" href="#experience">Experience</a>
+              <a class="footer-link" href="#projects">Projects</a>
+              <a class="footer-link" href="#contact">Contact</a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="footer-title">Connect</h2>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a class="footer-social whatsapp" href="https://wa.me/+201116648302" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 3A8.87 8.87 0 0 0 4.4 16.37L3.2 21l4.74-1.12A8.87 8.87 0 1 0 12.04 3Zm4.96 12.52c-.21.6-1.2 1.12-1.68 1.2-.45.07-1.02.1-1.64-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.35-3.8-4.48-3.98-.13-.17-1.07-1.42-1.07-2.72 0-1.3.68-1.93.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.06.6.46.21.52.73 1.78.8 1.91.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.76.98.87 1.8 1.14 2.06 1.27.26.13.42.11.57-.06.15-.17.66-.77.84-1.03.17-.26.35-.22.59-.13.24.09 1.52.72 1.78.85.26.13.44.2.5.31.07.12.07.67-.14 1.27Z"/></svg>
+              </a>
+              <a class="footer-social telegram" href="https://t.me/I_X_X_T" target="_blank" rel="noopener noreferrer" aria-label="Contact on Telegram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 4.3 18.5 19.6c-.24 1.08-.88 1.35-1.78.84l-4.92-3.63-2.37 2.28c-.26.26-.48.48-.98.48l.35-5 9.1-8.23c.4-.35-.09-.55-.61-.2L6.04 13.28 1.2 11.76c-1.05-.33-1.07-1.05.22-1.55L20.35 2.9c.88-.33 1.65.2 1.36 1.4Z"/></svg>
+              </a>
+              <a class="footer-social instagram" href="https://instagram.com/i_x_x_t" target="_blank" rel="noopener noreferrer" aria-label="Contact on Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 2.8h8.8a4.8 4.8 0 0 1 4.8 4.8v8.8a4.8 4.8 0 0 1-4.8 4.8H7.6a4.8 4.8 0 0 1-4.8-4.8V7.6a4.8 4.8 0 0 1 4.8-4.8Zm4.4 4.45A4.75 4.75 0 1 0 12 16.75a4.75 4.75 0 0 0 0-9.5Zm0 1.8A2.95 2.95 0 1 1 12 14.95a2.95 2.95 0 0 1 0-5.9Zm5.03-2.05a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1Z"/></svg>
+              </a>
+            </div>
+            <a href="#contact" class="footer-cta">
+              Start a Project
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; <span id="year"></span> Hamza Hesham. All rights reserved.</p>
+          <a href="#home" class="footer-top-link" aria-label="Back to top">
+            Back to top
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-<script src="main.js"></script>
 </html>
