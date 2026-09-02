@@ -1,0 +1,59 @@
+// ==========================================
+// Variables - المتغيرات الرئيسية
+// Portfolio Hamza Hesham - Bootstrap 5.3 RTL
+// ==========================================
+
+// 1. Color Palette - لوحة الألوان الفاخرة
+$ink: #050816;
+$night: #090d1f;
+$deep-blue: #0b132b;
+$glass-bg: rgba(255, 255, 255, 0.07);
+$glass-border: rgba(255, 255, 255, 0.12);
+$glass-border-hover: rgba(34, 211, 238, 0.45);
+
+$neon: #22d3ee;
+$neon-glow: rgba(34, 211, 238, 0.35);
+$mint: #34d399;
+$mint-glow: rgba(52, 211, 153, 0.35);
+$ember: #f59e0b;
+$ember-glow: rgba(245, 158, 11, 0.35);
+$rose: #f43f5e;
+$purple: #a855f7;
+
+// 2. Bootstrap Overrides
+$primary: $neon;
+$secondary: #1e293b;
+$success: $mint;
+$warning: $ember;
+$danger: $rose;
+$dark: $ink;
+$light: #f8fafc;
+
+$body-bg: $ink;
+$body-color: #e2e8f0;
+$link-color: $neon;
+$link-hover-color: lighten($neon, 15%);
+
+// 3. Arabic & Display Typography
+$font-family-arabic: 'Cairo', 'Tajawal', 'Almarai', system-ui, -apple-system, sans-serif;
+$font-family-english: 'Inter', system-ui, -apple-system, sans-serif;
+$font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+$headings-font-family: $font-family-arabic;
+$headings-font-weight: 800;
+
+// 4. Border Radius & Shadows
+$radius-sm: 0.5rem;
+$radius-md: 1rem;
+$radius-lg: 1.5rem;
+$radius-xl: 2rem;
+$radius-pill: 9999px;
+
+$shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.35);
+$shadow-glow: 0 0 35px rgba(34, 211, 238, 0.25);
+$shadow-mint: 0 0 35px rgba(52, 211, 153, 0.25);
+$shadow-ember: 0 0 35px rgba(245, 158, 11, 0.25);
+
+// 5. Transitions
+$transition-base: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-fast: all 0.15s ease-in-out;

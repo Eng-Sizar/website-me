@@ -1,0 +1,20 @@
+// ==========================================
+// Main SCSS Entry Point - ملف الربط الرئيسي
+// Portfolio Hamza Hesham - Bootstrap 5.3 RTL & jQuery
+// ==========================================
+
+// 1. Theme Configuration & Tokens
+@import "variables";
+@import "mixins";
+
+// 2. Base resets, animated background, typography
+@import "base";
+
+// 3. Layout, navbar, sections
+@import "layout";
+
+// 4. Components (cards, buttons, skills, projects)
+@import "components";
+
+// 5. English original footer
+@import "footer";

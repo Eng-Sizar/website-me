@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}حمزة هشام | مبرمج أول ومطور ويب (Full Stack){% endblock %}</title>
+
+    <!-- Google Fonts Arabic (Cairo) & English (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+    <!-- Compiled SCSS Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body class="bg-ink text-light antialiased">
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-gradient"></div>
+        <div class="mesh-line"></div>
+        <div class="float-shape shape-1"></div>
+        <div class="float-shape shape-2"></div>
+        <div class="float-shape shape-3"></div>
+        <div id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header id="navbar" class="custom-navbar">
+        <nav class="container-xl d-flex align-items-center justify-content-between">
+            <a href="#home" class="d-flex align-items-center gap-3 text-decoration-none">
+                <span class="brand-logo-badge">HH</span>
+                <span class="d-none d-sm-block text-white fw-bold">حمزة هشام</span>
+            </a>
+
+            <div class="d-none d-lg-flex align-items-center gap-2 nav-pill-box">
+                <a class="nav-link-custom active" href="#home">الرئيسية</a>
+                <a class="nav-link-custom" href="#about">نبذة عني</a>
+                <a class="nav-link-custom" href="#skills">المهارات</a>
+                <a class="nav-link-custom" href="#experience">الخبرة</a>
+                <a class="nav-link-custom" href="#projects">المشاريع</a>
+                <a class="nav-link-custom" href="#contact">تواصل معي</a>
+            </div>
+
+            <a href="#contact" class="btn-glow-primary d-none d-lg-inline-flex">لنبدأ البناء</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER: ORIGINAL ENGLISH AS REQUIRED -->
+    {% include 'includes/footer.html' %}
+
+    <!-- Scripts: jQuery & Bootstrap 5.3 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

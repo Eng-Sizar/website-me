@@ -1,0 +1,559 @@
+// ==========================================
+// Components - المكونات والبطاقات والأزرار
+// ==========================================
+
+@use "sass:color";
+@import "variables";
+@import "mixins";
+
+// 1. Custom Buttons
+.btn-glow-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border-radius: 9999px;
+  padding: 0.85rem 1.8rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #050816 !important;
+  background: linear-gradient(135deg, $neon 0%, $mint 55%, $ember 100%);
+  border: none;
+  box-shadow: 0 0 35px $neon-glow;
+  text-decoration: none;
+  transition: $transition-base;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(34, 211, 238, 0.45);
+    color: #000000 !important;
+  }
+}
+
+.btn-glow-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border-radius: 9999px;
+  padding: 0.85rem 1.8rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #e2e8f0 !important;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  text-decoration: none;
+  transition: $transition-base;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba($neon, 0.6);
+    color: $neon !important;
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.2);
+  }
+}
+
+// 2. Stat Cards (Hero stats)
+.stat-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  padding: 1.15rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  text-align: center;
+  transition: $transition-base;
+
+  dt {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  &:hover {
+    border-color: rgba($neon, 0.35);
+    transform: translateY(-3px);
+  }
+}
+
+// 3. Profile Frame
+.profile-wrapper {
+  position: relative;
+  max-width: 540px;
+  margin: 0 auto;
+
+  .glow-backdrop {
+    position: absolute;
+    inset: -15px;
+    border-radius: 2.5rem;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(52, 211, 153, 0.12), rgba(245, 158, 11, 0.18));
+    filter: blur(35px);
+    z-index: 1;
+  }
+
+  .profile-figure {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.75rem;
+    box-shadow: $shadow-soft;
+    backdrop-filter: blur(16px);
+    animation: profileFloat 6s ease-in-out infinite;
+
+    img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: 65% center;
+      border-radius: 1.5rem;
+
+      @media (max-width: 576px) {
+        height: 380px;
+      }
+    }
+
+    .profile-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(5, 8, 22, 0.75);
+      padding: 1rem 1.25rem;
+      backdrop-filter: blur(20px);
+
+      .caption-badge {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: $neon;
+        color: $ink;
+        box-shadow: 0 0 20px $neon-glow;
+      }
+    }
+  }
+}
+
+// 4. Glass Panels & Info Tiles (About Section)
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  box-shadow: $shadow-soft;
+  backdrop-filter: blur(20px);
+  border-radius: 2rem;
+  padding: 2.25rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.info-tile {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1.4rem;
+  padding: 1.4rem;
+  height: 100%;
+  transition: $transition-base;
+
+  .tile-number {
+    color: $neon;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+
+  h3 {
+    margin-top: 0.75rem;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  p {
+    margin-top: 0.65rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    border-color: rgba($neon, 0.4);
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+
+// 5. Skill Cards
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 230px;
+  border-radius: 1.5rem;
+  padding: 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+  backdrop-filter: blur(16px);
+  transition: $transition-base;
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: radial-gradient(circle at top right, color-mix(in srgb, var(--accent, #{$neon}), transparent 60%), transparent 45%);
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  svg {
+    position: relative;
+    width: 2.85rem;
+    height: 2.85rem;
+    color: var(--accent, #{$neon});
+    fill: currentColor;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 16px color-mix(in srgb, var(--accent, #{$neon}), transparent 40%));
+  }
+
+  h3 {
+    position: relative;
+    color: #ffffff;
+    font-size: 1.22rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    position: relative;
+    color: #94a3b8;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 0;
+    margin-top: auto;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: rgba($neon, 0.45);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(34, 211, 238, 0.15);
+  }
+}
+
+// 6. Timeline Cards (Experience)
+.timeline-card {
+  border-radius: 1.65rem;
+  padding: 1.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(18px);
+  transition: $transition-base;
+  height: 100%;
+
+  .timeline-badge {
+    display: inline-block;
+    color: $neon;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    background: rgba($neon, 0.1);
+    border: 1px solid rgba($neon, 0.25);
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.85rem;
+  }
+
+  p {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    transform: translateY(-7px);
+    border-color: rgba($neon, 0.45);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(34, 211, 238, 0.15);
+  }
+}
+
+// 7. Project Cards
+.project-card {
+  overflow: hidden;
+  border-radius: 1.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
+  backdrop-filter: blur(18px);
+  transition: $transition-base;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .project-visual {
+    position: relative;
+    min-height: 200px;
+    overflow: hidden;
+    color: white;
+
+    span {
+      position: absolute;
+      inset: 1.25rem;
+      border-radius: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(14px);
+    }
+
+    svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 1.75rem;
+    }
+
+    &.visual-one {
+      background: radial-gradient(circle at 25% 20%, rgba(34, 211, 238, 0.45), transparent 35%),
+                  linear-gradient(135deg, #111827, #062f3f);
+    }
+    &.visual-two {
+      background: radial-gradient(circle at 75% 25%, rgba(52, 211, 153, 0.45), transparent 32%),
+                  linear-gradient(135deg, #101827, #12362c);
+    }
+    &.visual-three {
+      background: radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.36), transparent 35%),
+                  linear-gradient(135deg, #151321, #3a2b12);
+    }
+  }
+
+  .project-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    h3 {
+      color: #ffffff;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.65rem;
+    }
+
+    p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+
+    span {
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.35rem 0.75rem;
+      color: #cbd5e1;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+  }
+
+  .project-actions {
+    display: flex;
+    gap: 0.75rem;
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      border-radius: 9999px;
+      padding: 0.65rem 1.25rem;
+      background: $neon;
+      color: #07101f;
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: $transition-base;
+
+      &.ghost {
+        color: #e2e8f0;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.12);
+          border-color: rgba($neon, 0.4);
+          color: $neon;
+        }
+      }
+
+      &:hover:not(.ghost) {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(34, 211, 238, 0.3);
+      }
+    }
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: rgba($neon, 0.45);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45), 0 0 35px rgba(34, 211, 238, 0.15);
+  }
+}
+
+// 8. Social Contact Buttons
+.social-btn {
+  display: flex;
+  min-height: 4.8rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  border-radius: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: $transition-base;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    color: #ffffff;
+  }
+
+  &.whatsapp:hover {
+    border-color: rgba(52, 211, 153, 0.6);
+    box-shadow: 0 0 28px rgba(52, 211, 153, 0.25);
+    background: rgba(52, 211, 153, 0.1);
+  }
+
+  &.telegram:hover {
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 28px rgba(56, 189, 248, 0.25);
+    background: rgba(56, 189, 248, 0.1);
+  }
+
+  &.instagram:hover {
+    border-color: rgba(244, 114, 182, 0.6);
+    box-shadow: 0 0 28px rgba(244, 114, 182, 0.25);
+    background: rgba(244, 114, 182, 0.1);
+  }
+}
+
+// 9. Variant Selector & Modal Styling
+.variant-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba($neon, 0.1);
+  border: 1px solid rgba($neon, 0.3);
+  color: $neon;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    background: rgba($neon, 0.2);
+    box-shadow: 0 0 20px $neon-glow;
+    color: #ffffff;
+  }
+}
+
+.modal-content-glass {
+  background: #090d1f;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+  border-radius: 1.75rem;
+  color: #e2e8f0;
+
+  .modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 2rem;
+  }
+
+  .modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.25rem 2rem;
+  }
+
+  .nav-pills {
+    .nav-link {
+      color: #94a3b8;
+      border-radius: 0.85rem;
+      padding: 0.65rem 1.2rem;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-left: 0.5rem;
+      margin-bottom: 0.5rem;
+      transition: $transition-base;
+
+      &.active {
+        background: linear-gradient(135deg, $neon, $mint);
+        color: #050816;
+        border-color: transparent;
+        font-weight: 800;
+      }
+
+      &:hover:not(.active) {
+        color: $neon;
+        border-color: rgba($neon, 0.3);
+      }
+    }
+  }
+
+  .code-container {
+    background: #050816;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    font-family: $font-family-mono;
+    font-size: 0.85rem;
+    color: #38bdf8;
+    max-height: 420px;
+    overflow-y: auto;
+    direction: ltr;
+    text-align: left;
+  }
+}

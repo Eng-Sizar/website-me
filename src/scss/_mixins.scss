@@ -1,0 +1,43 @@
+// ==========================================
+// Mixins - دوال وإضافات التنسيق
+// ==========================================
+
+@use "sass:color";
+@import "variables";
+
+// Glassmorphism Mixin
+@mixin glass-panel($bg: $glass-bg, $border: $glass-border, $blur: 20px) {
+  background: $bg;
+  border: 1px solid $border;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+// Glow Shadow Mixin
+@mixin glow-shadow($color: $neon, $alpha: 0.25, $spread: 35px) {
+  box-shadow: 0 0 $spread rgba($color, $alpha);
+}
+
+// Gradient Text
+@mixin text-gradient($start: $neon, $middle: $mint, $end: $ember) {
+  background: linear-gradient(135deg, $start 0%, $middle 50%, $end 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Hover Elevate
+@mixin hover-elevate($distance: -6px, $glow-color: $neon) {
+  transition: $transition-base;
+  &:hover {
+    transform: translateY($distance);
+    border-color: rgba($glow-color, 0.45);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba($glow-color, 0.2);
+  }
+}
+
+// Flex Center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,202 @@
+// ==========================================
+// Base & Ambient - الأساسيات والخلفية التفاعلية
+// ==========================================
+
+@use "sass:color";
+@import "variables";
+@import "mixins";
+
+:root {
+  color-scheme: dark;
+  --bs-body-bg: #{$ink};
+  --bs-body-color: #e2e8f0;
+  --bs-body-font-family: #{$font-family-arabic};
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-arabic;
+  background-color: $ink;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  position: relative;
+  direction: rtl;
+  text-align: right;
+
+  &::selection {
+    background-color: $neon;
+    color: $ink;
+  }
+}
+
+// Loader Screen
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background-color: $ink;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+
+  .loader-ring {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top-color: $neon;
+    border-right-color: $mint;
+    box-shadow: 0 0 35px $neon-glow;
+    animation: spinRing 1s linear infinite;
+  }
+}
+
+body.loaded #loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+// Animated Ambient Background
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+
+  .ambient-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.14), transparent 35%),
+                radial-gradient(circle at 80% 10%, rgba(245, 158, 11, 0.12), transparent 30%),
+                radial-gradient(circle at 50% 80%, rgba(52, 211, 153, 0.1), transparent 40%),
+                linear-gradient(135deg, #050816 0%, #080d22 50%, #02030a 100%);
+  }
+
+  .mesh-line {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(circle at center, black, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 75%);
+    opacity: 0.5;
+  }
+
+  .float-shape {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 34% 66% 61% 39% / 34% 32% 68% 66%;
+    background: rgba(255, 255, 255, 0.02);
+    animation: morphFloat 12s ease-in-out infinite;
+
+    &.shape-1 {
+      top: 15%;
+      right: 8%;
+      width: 140px;
+      height: 140px;
+      border-color: rgba($neon, 0.2);
+    }
+    &.shape-2 {
+      top: 40%;
+      left: 10%;
+      width: 190px;
+      height: 190px;
+      border-color: rgba($mint, 0.15);
+      animation-delay: -4s;
+    }
+    &.shape-3 {
+      bottom: 12%;
+      right: 20%;
+      width: 120px;
+      height: 120px;
+      border-color: rgba($ember, 0.15);
+      animation-delay: -7s;
+    }
+  }
+
+  #particles {
+    position: absolute;
+    inset: 0;
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(125, 211, 252, 0.8);
+      box-shadow: 0 0 16px rgba(34, 211, 238, 0.8);
+      animation: particleDrift var(--duration) linear infinite;
+      animation-delay: var(--delay);
+    }
+  }
+}
+
+// Reveal on scroll animations
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animations Keyframes
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes morphFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    border-radius: 34% 66% 61% 39% / 34% 32% 68% 66%;
+  }
+  50% {
+    transform: translate3d(-20px, -28px, 0) rotate(14deg);
+    border-radius: 64% 36% 42% 58% / 47% 62% 38% 53%;
+  }
+}
+
+@keyframes particleDrift {
+  from {
+    transform: translate3d(0, 100vh, 0);
+    opacity: 0;
+  }
+  15%, 80% {
+    opacity: 0.85;
+  }
+  to {
+    transform: translate3d(-18px, -15vh, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes profileFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.25em;
+  background-color: $neon;
+  margin-right: 4px;
+  vertical-align: middle;
+  animation: cursorBlink 0.75s infinite;
+  box-shadow: 0 0 12px $neon;
+}

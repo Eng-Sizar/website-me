@@ -1,0 +1,204 @@
+// ==========================================
+// Layout - الهيكل والتنسيق العام
+// ==========================================
+
+@use "sass:color";
+@import "variables";
+@import "mixins";
+
+// Fixed Header / Navbar
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  padding: 1.25rem 0;
+  transition: $transition-base;
+
+  &.nav-scrolled {
+    padding: 0.75rem 0;
+    background: rgba(5, 8, 22, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .nav-pill-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    padding: 0.35rem;
+    backdrop-filter: blur(16px);
+  }
+
+  .nav-link-custom {
+    color: #cbd5e1;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.55rem 1.15rem;
+    border-radius: 9999px;
+    transition: $transition-base;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover,
+    &.active {
+      color: #050816;
+      background: linear-gradient(135deg, $neon, $mint);
+      box-shadow: 0 0 20px $neon-glow;
+    }
+  }
+
+  .brand-logo-badge {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: $neon;
+    font-weight: 900;
+    font-size: 1.05rem;
+    box-shadow: 0 0 25px $neon-glow;
+    backdrop-filter: blur(12px);
+    transition: $transition-base;
+
+    &:hover {
+      transform: scale(1.05);
+      border-color: $neon;
+    }
+  }
+
+  .mobile-collapse-menu {
+    border-radius: 1.5rem;
+    background: rgba(9, 13, 31, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: $shadow-soft;
+    backdrop-filter: blur(24px);
+    padding: 1rem;
+    margin-top: 0.75rem;
+
+    .mobile-nav-link {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      color: #e2e8f0;
+      font-weight: 700;
+      text-decoration: none;
+      transition: $transition-base;
+
+      &:hover,
+      &.active {
+        background: rgba(255, 255, 255, 0.08);
+        color: $neon;
+      }
+    }
+  }
+}
+
+// Section Base Shell
+.section-shell {
+  position: relative;
+  padding: 6.5rem 0;
+
+  @media (max-width: 768px) {
+    padding: 4.5rem 0;
+  }
+}
+
+.section-kicker {
+  color: $neon;
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: $neon;
+    border-radius: 2px;
+  }
+}
+
+.section-title {
+  color: #ffffff;
+  font-size: clamp(2.1rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+// Hero Section Specific
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 8.5rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+
+  .hero-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    backdrop-filter: blur(16px);
+    margin-bottom: 1.5rem;
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $mint;
+      box-shadow: 0 0 16px rgba(52, 211, 153, 0.9);
+    }
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 1rem;
+
+    .gradient-highlight {
+      display: block;
+      margin-top: 0.4rem;
+      @include text-gradient($neon, $mint, $ember);
+    }
+  }
+
+  .typing-container {
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+
+    .typing-highlight {
+      color: $neon;
+    }
+  }
+
+  .hero-description {
+    font-size: 1.12rem;
+    line-height: 1.85;
+    color: #cbd5e1;
+    max-width: 600px;
+    margin-bottom: 2.25rem;
+  }
+}
